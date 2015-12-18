@@ -171,3 +171,62 @@ tabLayout.setupWithViewPager(pager);
 ```
 
 ---
+
+#### App Bar
+
+The CoordinatorLayout lets us adapt our layouts based on different scroll events that may take place, allowing us to alter the appearance of our views (such as the Toolbar) when the user scrolls the content on the screen.
+
+Scroll Properties:
+
+* enterAlways
+* enterAlwaysCollapsed
+
+```
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior=
+        "@string/appbar_scrolling_view_behavior" />
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            ...
+            app:layout_scrollFlags="scroll|enterAlways" />
+
+        <android.support.design.widget.TabLayout
+            ...
+            />
+    </android.support.design.widget.AppBarLayout>
+</android.support.design.widget.CoordinatorLayout>
+
+```
+
+#### ToolBars
+
+You can now wrap a Toolbar component with the new CollapsingToolbarLayout, which allows the layout to collapse as the user scrolls the screens content:
+
+```
+<android.support.design.widget.AppBarLayout
+        android:layout_height="192dp"
+        android:layout_width="match_parent">
+    <android.support.design.widget.CollapsingToolbarLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_scrollFlags="scroll|exitUntilCollapsed">
+        <android.support.v7.widget.Toolbar
+                android:layout_height="?attr/actionBarSize"
+                android:layout_width="match_parent"
+                app:layout_collapseMode="pin" />
+        </android.support.design.widget.CollapsingToolbarLayout>
+</android.support.design.widget.AppBarLayout>
+
+```
